@@ -18,6 +18,7 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/ws", handleWebSocket)
 	http.Handle("/", r)
+	log.Println("Server is running: localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
