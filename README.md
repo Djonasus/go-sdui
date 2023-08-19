@@ -2,8 +2,8 @@
 
 ## Используемые библиотеки:
 1) gorilla mux;
-1) gorilla websocket.
-1) gorm
+1) gorilla websocket;
+1) gorm.
 
 Сначала необходимо запустить сервер:
 
