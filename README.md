@@ -51,6 +51,9 @@ _Для ленивых, можно запустить файл `sdui (linux, osx
 	}
 ```
 
+![image](https://github.com/Djonasus/go-sdui/assets/60808389/3ec3b6b4-52b5-430a-98e1-c9cb6345c581)
+
+
 ## Экран создания задачи:
 
 ```
@@ -87,3 +90,5 @@ _Для ленивых, можно запустить файл `sdui (linux, osx
 		]
 	}
 ```
+
+![image](https://github.com/Djonasus/go-sdui/assets/60808389/f70aa7ac-50dd-421f-9f55-68184676937d)
