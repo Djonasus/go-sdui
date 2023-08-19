@@ -11,7 +11,7 @@ $(document).ready(function() {
   
     socket.onmessage = function(event) {
       const data = JSON.parse(event.data);
-      buildUI(data.components);
+      buildUI($("#ui-container"), data.components);
     };
   
     socket.onclose = function(event) {
@@ -19,26 +19,40 @@ $(document).ready(function() {
     };
   }
   
-  function buildUI(components) {
-    const container = $("#ui-container");
+  function buildUI(container, components) {
+    //const container = $("#ui-container");
     container.empty();
   
     components.forEach(function(component) {
-      if (component.type === "text") {
-        const textElement = $("<p>").text(component.content);
-        container.append(textElement);
-      } else if (component.type === "image") {
-        const imageElement = $("<img>").attr("src", component.url);
-        container.append(imageElement);
-      } else if (component.type === "button") {
-        const buttonElement = $("<button>").text(component.label);
-        buttonElement.click(function() {
-          if (component.action === "open_link") {
-            window.open(component.data, "_blank");
-          }
-        });
-        container.append(buttonElement);
-      }
+        var elem;
+
+        switch (component.type) {
+            case "text":
+                elem = $("<p>").text(component.content);
+                break;
+            case "image":
+                elem = $("<img>").attr("src", component.url);
+                break;
+            case "button":
+                elem = $("<button>").text(component.label);
+                elem.click(function() {
+                    if (component.action === "open_link") {
+                        window.open(component.data, "_blank")
+                    }
+                });
+                break;
+            case "div":
+                elem = $("<div>")
+                buildUI(elem, component.children)
+            default:
+                break;
+        }
+        if (component.style != null) {
+            for (var key in component.style) {
+                elem.css(component.style[key]);
+            }
+        }
+        container.append(elem)
     });
   }
   

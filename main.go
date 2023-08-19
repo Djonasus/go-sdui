@@ -35,7 +35,12 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request) {
 		"components": [
 			{
 				"type": "text",
-				"content": "Welcome to our app!"
+				"content": "Welcome to our app!",
+				"style": [
+					{
+						"color" : "red"
+					}
+				]
 			},
 			{
 				"type": "image",
@@ -46,6 +51,20 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request) {
 				"label": "Click me",
 				"action": "open_link",
 				"data": "https://minecraft.net"
+			},
+			{
+				"type": "div",
+				"children": [
+					{
+						"type": "text",
+						"content": "indiv object"
+					}
+				],
+				"style": [
+					{
+						"background-color": "yellow"
+					}
+				]
 			}
 		]
 	}`)
